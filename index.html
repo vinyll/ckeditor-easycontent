@@ -6,8 +6,19 @@
   <title>CKEditor easycontent plugin demo</title>
   <script src="http://cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script></head>
 <body>
+
+  <h1>Easycontent CKEditor plugin demo</h1>
+  <ul>
+    <li><a href="https://github.com/vinyll/ckeditor-easycontent">Plugin page</a></li>
+    <li><a href="https://github.com/vinyll/ckeditor-easycontent/tree/gh-pages">this demo source</a></li>
+  </ul>
+
+  <p>The below editor contains the 2 default CKEditor <em>bold</em> and <em>italic</em> buttons, and 3 <em>easycontent</em> buttons.</p>
+
   <div id="editor"></div>
+
   <script>
+    // Add the plugin source into CKEDITOR (or copy/paste it into you ckeditor/plugins folder).
     CKEDITOR.plugins.addExternal(
       'easycontent',
       'https://rawgit.com/vinyll/ckeditor-easycontent/master/easycontent/',
