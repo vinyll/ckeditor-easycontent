@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CKEditor easycontent plugin demo</title>
+  <script src="http://cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script></head>
+<body>
+  <div id="editor"></div>
+  <script>
+    CKEDITOR.plugins.addExternal(
+      'easycontent',
+      'https://rawgit.com/vinyll/ckeditor-easycontent/master/easycontent/',
+      'plugin.js'
+    );
+
+    CKEDITOR.replace('editor', {
+      // Activate easycontent plugin
+      extraPlugins: 'easycontent',
+
+      // Add 'Ruler', 'Iframe', 'Code' and 'Snippet' the buttons defined below
+      toolbar: [['Bold', 'Italic'], ['Iframe', 'Code', 'Snippet']],
+
+      // Define buttons and their action
+      easycontent: [
+        // This is a simple snippet inserter
+        {
+          name: 'Snippet',
+          title: 'Insert a list definition',
+          icon: '/icons/snippet.png',
+          html: "<dl><dt>√ Snippet title</dt><dd>Snippet content</dd></dl>"
+        },
+        // This button will prompt for the HTML code to insert
+        {
+          name: 'Code',
+          title: 'A simple code prompter',
+          icon: '/icons/code.png',
+          html: function(editor) {
+              return window.prompt("What code to you want to insert?");
+          }
+        },
+        // This is a more complex callback function that creates an Iframe
+        {
+          name: 'Iframe',
+          title: 'A simple iframe creator',
+          icon: '/icons/iframe.png',
+          html: function(editor) {
+              var source = window.prompt('Insert the source of your iframe');
+              if(!source) {
+                  return alert("You must specify an URL to create an Iframe");
+              }
+              return '<iframe src="'+source+'" width="100%" height="300"></iframe>';
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+</html>
